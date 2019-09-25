@@ -1,0 +1,13 @@
+language: julia
+
+os:
+  - linux
+  - osx
+
+julia:
+  - 1.2
+  - 1.3
+  - nightly
+
+after_success:
+    - julia -e 'cd(Pkg.dir("Gmsh")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
